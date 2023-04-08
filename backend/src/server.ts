@@ -7,6 +7,7 @@ import path from 'path';
 import { config } from 'dotenv';
 import { connectDB } from './config/db.config';
 import { COOKIE_SECRET } from './common/common.constants';
+import FarmerAuthRoutes from './routes/farmer/auth/auth.router';
 
 const PORT = process.env.PORT || 5000;
 
@@ -18,6 +19,8 @@ app.use(cors());
 app.use(cookieParser(COOKIE_SECRET));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use("/farmer/auth", FarmerAuthRoutes);
 
 app.use(async (req, res, next) => {
     next(httpErrors.NotFound(`Route not found for [${req.method}] ${req.url}`));
