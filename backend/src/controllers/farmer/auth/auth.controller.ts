@@ -128,6 +128,7 @@ const refreshToken = async (req: Request, res: Response, next: NextFunction) => 
                         pinCode: farmer.pinCode,
                         productType: farmer.productType,
                     },
+                    message: "Token rotation successful"
                 },
             });
     } catch (error: any) {
